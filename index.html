@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Advanced GameplayTagManager - Documentation</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico">  
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <script defer src="assets/fontawesome/js/all.js"></script>
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <link rel="stylesheet" href="./assets/default/style.min.css">
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+</head> 
+<body class="body-orange">
+    <div class="page-wrapper">
+        <header id="header" class="header">
+            <div class="container">
+                <div class="branding text-center">
+                    <h1 class="logo">
+                        <a href="index.html">
+                            <span aria-hidden="true" class="icon_documents_alt icon"></span>
+                            <span class="text-highlight"><span class="text-bold">Documentation</span>
+                        </a>
+                    </h1>
+                    
+                </div><!--//branding-->
+                
+            </div><!--//container-->
+        </header>
+        <div class="doc-wrapper">
+            <div class="container">
+                <div id="doc-header" class="doc-header text-center">
+                     <img class="doc-content img-fluid" style="width: 100% !important; height: 400px !important;"  src="./assets/images/Cover.png"> 
+                    </br></br></br></br>
+                    <h1 class="doc-title"><i class="icon fa fa-bolt"></i> Advanced GamePlay Tag Manager</h1>
+                </div>
+                <div class="doc-body row">
+                    <div class="doc-content col-md-9 col-12 order-1">
+                        <div class="content-inner">
+                            <section id="introduction-section" class="doc-section">
+                                <h2 class="section-title">Introduction</h2>
+                                <div class="section-block">
+                                   <p>The Advanced Gameplay Tags Manager System (AGTMS) is a production-ready Unreal Engine plugin designed to simplify and enhance the control of Gameplay Tags within any game project. <br>
+It provides developers with a clean, structured approach to managing tags across multiple layers, ensuring consistent behavior, easier debugging, and complete control over active, blocked, and permanent states. <br>
+The system is fully blueprint-friendly and can be integrated seamlessly into both small prototypes and large-scale projects.</p>
+<img src="assets/images/6.gif" class="w-100">                           
+
+</div>
+                            </section>
+                            <section id="why-section" class="doc-section">
+                                <h2 class="section-title">Why this component ?</h2>
+                                <div id="Key Features"  class="section-block">
+                                    <a class="btn btn-dark" style="margin: 3px;" target="_blank"><i class="fas fa-check"></i>• Multi-Layer Tag System</a>
+                                    <p>Active, Blocked, and Permanent layers for full control over character states.</p>
+                                         <a class="btn btn-dark" style="margin: 3px;" target="_blank"><i class="fas fa-check"></i>• Smart Validation Checks</a>
+                                      <p>Automatic protection against invalid add/remove operations using layered rules.</p>
+                                         <a class="btn btn-dark" style="margin: 3px;" target="_blank"><i class="fas fa-check"></i>• Bi-Directional Conflict Rules</a>
+                                      <p>Flexible conflict engine that prevents incompatible tags in both directions.</p>
+                                         <a class="btn btn-dark" style="margin: 3px;" target="_blank"><i class="fas fa-check"></i>• Runtime Tag Replacement</a>
+  <p>Instantly swap tags (e.g., unarmed → rifle) with zero manual logic.</p>
+      <a class="btn btn-dark" style="margin: 3px;" target="_blank"><i class="fas fa-check"></i>• Event-Driven Architecture</a>
+          <p>Dispatchers for tag added/removed, blocked tags, conflicts events.</p>  
+      <a class="btn btn-dark" style="margin: 3px;" target="_blank"><i class="fas fa-check"></i>• Runtime Blacklist Support</a>
+       <p>Temporarily restrict certain tags inside zones, triggers, or gameplay states.</p>
+      <a class="btn btn-dark" style="margin: 3px;" target="_blank"><i class="fas fa-check"></i>• Save & Load Ready</a>
+       <p>Built-in serialization for restoring full tag state across levels or sessions.</p>
+      <a class="btn btn-dark" style="margin: 3px;" target="_blank"><i class="fas fa-check"></i>• Blueprint-Only, High Performance</a>
+               <p>No ticks, clean logic, scalable, and fully compatible with Animation Blueprints & Choosers.</p> 
+                <a class="btn btn-dark" style="margin: 3px;" target="_blank"><i class="fas fa-check"></i>• Plug-and-Play Integration</a>
+               <p>Drop the component in any character and start using it immediately.</p>                        
+                                </div><!--//section-block-->
+                                <div id=""  class="section-block">
+                                    <p class="p-4" style="font-size: 16px;">eliminates the complexity of managing large tag systems by offering a unified, reliable solution. <br>
+Instead of manually creating rules, checks, and tag validations, developers can rely on a powerful, pre-built framework that reduces development time, prevents logic errors, and keeps gameplay behavior consistent. <br>
+This plugin is designed to fit any workflow, whether you're building a first-person shooter, an open-world adventure.
+                                    </p>
+                                 
+                                </div><!--//section-block-->
+                                <div id=""  class="section-block">
+                                    <h3 class="block-title"><i class="fas fa-question-circle" aria-hidden="true"></i> why built gameplay tags framework Even though it's built in ?</h3>
+                                    <p class="font16">Unreal Engine gives you : GameplayTag, GameplayTagContainer, Add Tag, Remove Tag, MatchesTag, HasTag...etc <br>
+                                       There are no : [PermanentLayer][ActiveLayer][BlockedLayer] 
+                                       <br>
+                                       Conflict Handling, events dispatchers , rule logic ..... and others things <br>
+                                    This gives your game a AAA level of control—especially if you're going to do an Ability System or Character States. <br>
+                                Our component is professional State  Management ,<br>
+                            You are the one who designs the rules of the system. <br>
+                        also unreal engine not gives you Multi-Tag Operations with Array of tags , this component plug & play
+
+, reusable <br> GamePlay Tags in Unreal Engine are just the foundation.
+</p><br><h3>🎯 Summary</h3> <br><p>
+We built a complete framework on top of them: <br>
+✔ Active/Blocked/Permanent Layers<br>
+✔ Conflict System<br>
+✔ Debug System<br>
+✔ Events<br>
+✔ Tag Utilities<br>
+✔ Multi-Tag System<br>
+✔ Reusable Component<br>
+✔ AAA Architecture<br>
+<br>
+This isn't readily available and gives your game significantly more power, control, and organization. 
+<br>
+You simply need to employ it in your own way to build your game and benefit from it.</p>
+                                </div><!--//section-block-->
+                            </section>
+                            <section id="install-section" class="doc-section">
+                                <h2 class="section-title">Installation & migrate</h2>
+                                <div class="section-block">
+       <h6>1 - when you download the project you will have this files :</h6>
+       <h6>2 - Migrate GP_TagManager to your project content folder</h6>
+
+                                     <div id="jstree">
+    <ul >
+      <li class="jstree-open">Content
+        <ul>
+          <li class="jstree-open">GameplayTagManager
+            <ul>
+                <li role="none" class="jstree-closed jstree-clicked jstree-checkbox-disabled">GP_TagManager  (this folder we will migrate to our project)
+                    <ul>
+                        <li >Data<ul>
+                            <li>DataTable <ul>
+                          <li  data-jstree="{ &quot;icon&quot; : &quot;fas fa-code-branch&quot; }"  >DT_GameplayTagManager.uasset</li>
+
+        
+                            </ul></li>
+ <li>Structure 
+    <ul>
+        <li>Nested<ul>
+        
+        </ul></li>
+        <li>Save_load_state <ul>
+
+        
+        </ul></li>
+    </ul>
+ </li>                       
+                        </ul></li>
+                          <li  data-jstree="{ &quot;icon&quot; : &quot;fas fa-file-code&quot; }"  >GameplayTagManager.uasset</li>
+        
+                    </ul>
+                </li>
+                
+                <li>Example  (basic example for how to use)</li>
+                <li>Documentation  (docs to guide you)</li>
+                  </ul>
+          </li>
+          
+        </ul>
+      </li>
+     
+    </ul> 
+    
+  </div>
+  
+  <center><img src="assets/Gifs/1.gif" class="w-75"></center> <br><br>
+  <h6>3 - Then go to your character or any actor blueprint you want to use component for him and add the component</h6>
+    <center><img src="assets/images/2.gif" class="w-75"></center>
+     <h6>4 - then you should initialize component by calling initalizepermtags function on event begin play</h6>
+          <h6>5 - Then, in the actortype input field, give a name to the character to whom you want to add the component. A specific name is not required.</h6>
+     <center><img src="assets/images/3.gif" class="w-75"></center>
+<br>
+ <h6>6 - Last thing you should do go to DataTable folder then edit [DT_GameplayTagManager]</h6>
+                             <div id="jstree2">
+    <ul >
+      <li class="jstree-open">Content
+        <ul>
+          <li class="jstree-open">GameplayTagManager
+            <ul>
+                <li role="none" class="jstree-open">GP_TagManager  (this folder we will migrate to our project)
+                    <ul>
+                        <li class="jstree-open" >Data<ul>
+                            <li class=" jstree-open">DataTable <ul>
+                          <li class="jstree-checkbox-disabled"  data-jstree="{ &quot;icon&quot; : &quot;fas fa-code-branch&quot; }"  >DT_GameplayTagManager.uasset</li>
+
+        
+                            </ul></li>
+                       
+                        </ul></li>
+        
+                    </ul>
+                </li>
+                
+              
+                  </ul>
+          </li>
+          
+        </ul>
+      </li>
+     
+    </ul> 
+    
+  </div>
+   <h6>6 - You will see table structure like that let us explain what is that exactly</h6>
+
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>RowName</th>
+                                                    <th>PermanentTags</th>
+                                                    <th>Conflict rules</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="color: white; background-color: black;">RowName == ActorType</td>
+                                                     <td style="color: white; background-color: black;">PermanentLayer</td>
+                                                      <td style="color: white; background-color: black;">tag + array(conflicted with tags)</td>
+                                                </tr>
+                                               
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <h6>7 - we say Character have permanentTag = type.police  and Jump conflict with Aiming</h6>
+                                    <p>then we should type character in actortype input in initializepermtag function to select the right row from dataTable <br>
+                                    also if you forget to reverse the rule like can't aiming while jumping don't worry conflict rule will check it in biDirectional</p>
+                                    <img src="assets/images/5.gif" class="w-100">
+
+
+ <div class="callout-block callout-info">
+                                        <div class="icon-holder">
+                                            <i class="fas fa-bell"></i>
+                                        </div><!--//icon-holder-->
+                                        <div class="content">
+                                            <h4 class="callout-title">Compatible Versions :</h4>
+                                            
+                                            <p>Component created for : Windows / UE 5.4 - 5.6
+                                            <br>but component  should work in any platform or version that support gameplay tags
+                                            <br>Sample project created in  : Windows / UE 5.6 </p>
+                                        </div><!--//content-->
+                                    </div>
+                                    <hr>
+    </div><!--//section-block-->
+                            </section>
+                            <section id="core-section" class="doc-section">
+    <h1 class="doc-title">Core Concepts</h1>
+    <hr>
+                                <div id="html" class="section-block">
+                                    <a class="btn" style="margin: 3px; text-decoration: none; color: green;" target="_blank"><i class="fas fa-check"></i>1. Active Tags Layer</a>
+                                    <p>Represents the tags currently applied to the character during gameplay. <br> These tags define the character’s live state (e.g.)</p>
+                                        <code class="javascript">character.movement.run</code> <code class="javascript">character.weapon.rifle</code>
+                                   <hr>
+ <a class="btn" style="margin: 3px; text-decoration: none; color: green;" target="_blank"><i class="fas fa-check"></i>2. Blocked Tags Layer</a>
+                                    <p>A temporary blacklist that prevents certain active tags from being added.<br>
+Useful for restricted areas, gameplay zones, physics puzzles, stealth rooms, etc.</p>
+                                   <hr>
+                                   <a class="btn" style="margin: 3px; text-decoration: none; color: green;" target="_blank"><i class="fas fa-check"></i>3. Permanent Tags Layer</a>
+                                    <p>A high-level category reserved for tags that must never be removed unless explicitly forced.<br>
+Useful for class attributes, character abilities, or permanent game modes.</p><hr>
+<a class="btn" style="margin: 3px; text-decoration: none; color: green;" target="_blank"><i class="fas fa-check"></i>4. Conflict Rules (Bi-Directional)</a>
+                                    <p>A powerful rule engine that prevents incompatible tags from co-existing.
+<br>
+The check works both ways In case you forgot to add the reverse rule:</p>
+ <code class="javascript">If A conflicts with B → B conflicts with A</code> <code class="javascript">If B is active → A cannot be added</code>
+ <code class="javascript">If A is active → B cannot be added</code>
+ <p>This guarantees stable & predictable gameplay logic.</p>
+ <hr>
+  <a class="btn" style="margin: 3px; text-decoration: none; color: green;" target="_blank"><i class="fas fa-check"></i>5. Tag Replacement</a>
+                                    <p>A shortcut operation to swap tags immediately. <br> Example: <br></p>
+                                    <code class="javascript">aiming.unarmed</code> → <code class="javascript">aiming.rifle</code>
+<hr>
+
+  <a class="btn" style="margin: 3px; text-decoration: none; color: green;" target="_blank"><i class="fas fa-check"></i>6. Serialization Support</a>
+                                    <p>You can save and restore the entire tag state using built-in functions:<br></p>
+                                    <code class="javascript">GetSerializedTags</code> → <code class="javascript">LoadSerializedTags</code>
+                                    <p>Useful for respawns, save systems, or switching levels.</p>
+<hr>
+
+  <a class="btn" style="margin: 3px; text-decoration: none; color: green;" target="_blank"><i class="fas fa-check"></i>7. Event Dispatchers</a>
+                                    <p>The system fires multiple events whenever tags change:<br></p>
+                                    <code class="javascript">OnTagAdded</code><code class="javascript">OnTagBlocked</code>
+                                    <code class="javascript">OnTagRemoved</code><code class="javascript">OnTagConflict</code>
+                                    <code class="javascript">OnTagsSerialized</code><code class="javascript">OnTagsLoaded</code>
+                                    <p>Events allow disconnected systems (UI, animations, weapons, effects…) to react instantly.</p>
+<hr>
+                                </div>
+                            </section>
+                            <section id="api-section" class="doc-section" style="background: black;padding: 0px 10px 0px 10px;">
+                                 <div class="callout-block" style="background-color: black;">
+                                      <div>  
+                                        <div class="content">
+                                            <center><h1 class="callout-title" style="color:white; margin-right: 150px; font-size: 30px;">📘 API Documentation 📘</h1></center>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr style="color: white !important;">
+                                <div class="section-block">
+                                    <p style="font-size: large; color: white;">
+                                        This section provides a complete reference for all public functions included in the Advanced Gameplay Tags Manager Component.
+Each function is organized by category and explained in a clear, concise, and technical manner.
+                                    </p>
+                                </div>
+                                <div class="section-block" >
+                                   <div class="section-block" id="init">
+                                   <h1 class="section-title orange">1. Initialization</h1>
+                                   <img src="assets/images/tags/init.PNG" class="w-100">
+                                  <hr><p class="white">
+Called once on BeginPlay.
+Loads default permanent tags from component settings and pushes them into:
+<br>
+Permanent Layer
+<br>
+Active Layer
+<br>
+Ensures consistent startup state.<br>
+<code>Input: Target(Obj ref)</code> → <code>Component Reference</code><br>
+<code>Input: ActorType(Name)</code> → <code>RowName</code>
+RowName == ActorType in DataTable to fetch the row for specific ActorType <br>
+<code>Input: Debug(Bool)</code> → <code>True/False</code> 
+this debug bool print messages on screen to see if everything work correctly or not
+         <br>
+        Logic : 
+        <br><code>1. Prevent twice calling and print error if that happend</code> 
+        <br><code>2. Validation for inputs to make sure inputs not empty or ActorType is wrong</code> 
+        <br><code>3. Check for any duplicated values and print error message</code> 
+        <br><code>4. Check for any Conflict rules if we add 2 conflicted tags with each other</code> 
+        <br><code>5. Prepare active layer and permanent layer [Success] </code> 
+        </p>
+                                </div>
+                                     <div class="section-block" id="add">
+                                   <h1 class="section-title orange">2. Add Operations</h1>
+                                     <img src="assets/images/tags/addActive.PNG" class="w-100"><hr>
+
+
+                             <div class="section-block white" id="addActive">
+                                     <h4 class="section-title cyan">AddActiveTag()</h2><br>
+                                        <p class="white">
+                                            Adds a single Gameplay Tag to the Active Layer.<br>
+This operation performs full validation before adding the tag to ensure system stability and predictable behavior.<br>
+<code>Input: Tag(GameplayTag)</code> →  Tag we want to add.<br>
+<code>Input: Print(bool)</code> → To print debug messages for development.
+<br>
+<code>Output: IsAdded(bool)</code> → To use it for conditions.<br>
+<code>Output: Reason(String)</code> → To print Reason to know success or why fail or just use <code>Print(True)</code><br>
+<h6 class="bold white">Validation Steps: </h6> 
+When calling this function, the system automatically checks:
+<br><br>
+<h6 class="bold">Check Duplicated</h6>
+
+1. If the tag exists in Active or Blocked layer → operation fails.
+<br><br>
+<h6 class="bold">Permanent Layer Rule Check
+</h6>
+Permanent tags always override; conflicts are respected.<br><br>
+<h6 class="bold">Bi-Directional Conflict Rules
+</h6>
+The system checks both:
+<br>
+Active tags conflicting with the new tag
+<br>
+New tag conflicting with active tags
+<br>
+Ensures consistency even if the user forgets to define the reverse rule.
+                                        </p>
+                             </div>
+
+
+   <div class="section-block white" id="addActive">
+                                     <h4 class="section-title cyan">AddActiveTags(Array)</h2><br>
+                                        <p class="white">
+                                          Adds multiple tags into the Active Layer in a single batch operation.
+Each tag is validated independently using the exact same logic as <code>AddActiveTag().</code><br>
+
+
+<br>
+<code>Input: Tags(GameplayTagContainer)</code> →  Tags we want to add.<br>
+<h6 class="bold white">Behavior: </h6> 
+*Tags are added sequentially
+<br>
+*Failed tags do NOT stop the batch
+<br>
+<h6 class="bold white">Each tag runs: </h6> 
+
+*Block check
+<br>
+*Permanent check
+<br>
+*Conflict rules (bi-directional)
+<br>
+*Duplicate prevention
+                                        </p>
+                             </div>
+                                
+<div class="section-block white" id="addBlocked">
+         <img src="assets/images/tags/addBlocked.PNG" class="w-100"><br><br>
+                                     <h4 class="section-title cyan">AddBlockedTag()</h2><br>
+                                        <p class="white">
+                                         Adds a single Gameplay Tag to the Blocked Layer.<br>
+Blocked Tags immediately prevent any tag from being activated if it appears in this list.<br>
+This layer has the highest priority in the system.<br><br>
+<code>Input: Tag(GameplayTag)</code> →  Tag we want to add.<br>
+<code>Input: Print(bool)</code> → To print debug messages for development.
+<br>
+<code>Output: IsAdded(bool)</code> → To use it for conditions.<br>
+<code>Output: Reason(String)</code> → To print Reason to know success or why fail or just use <code>Print(True)</code><br><br>
+<h6 class="bold">Validation Steps</h6>
+When you call AddBlockedTag, the system performs:
+
+
+<h6 class="bold">Permanent Layer Check</h6>
+
+Permanent tags cannot be blocked.<br>
+
+If the user tries → operation fails.
+<h6 class="bold">Duplicate Prevention</h6>
+
+If the tag is already in Blocked or Active → operation fails silently.<br>
+(Ensure you removed it from active layer before add to blocked tags.)
+
+<h6 class="bold">Behavior</h6>
+
+When a tag becomes blocked:
+<br>
+It cannot be added to Active.
+<br>
+Any function attempting to activate the tag will fail.
+<br>
+Used for restricted areas, forbidden actions, global silencing, etc.
+<br>
+
+<h6 class="bold">Best Use Cases</h6>
+Restricted zones (disable weapon usage, jumping, aiming…)
+<br>
+Cutscenes
+<br>
+UI menus → disable character control
+<br>
+Stun / freeze states
+<br>
+Any "hard lock" mechanic
+<br><br><br>
+ <h4 class="section-title cyan">AddBlockedTags(Array)</h2><br>
+<p><code>Same as AddBlockedTag</code> <br> <br>
+Adds multiple tags to the Blocked Layer in one batch.<br>
+Each tag passes through full validation independently.
+</p>
+                                        </p>
+                             </div>
+                                </div>
+                                  <div class="section-block" id="remove">
+                                   <h1 class="section-title orange">3. Remove Operations</h1>
+                                   
+
+
+                             <div class="section-block white" id="removeActive">
+                                  <img src="assets/images/tags/removeActive.PNG" class="w-100"><hr>
+                                     <h4 class="section-title cyan">RemoveActiveTag()</h2><br>
+                                        <p class="white">
+                                           Removes a single tag from the Active Layer.<br>
+                                           <code>Input: Tag(GameplayTag)</code> →  Tag we want to remove.<br>
+<code>Input: Print(bool)</code> → To print debug messages for development.
+<br>
+<code>Output: IsRemoved(bool)</code> → To use it for conditions.<br>
+<code>Output: Reason(String)</code> → To print Reason to know success or why fail or just use <code>Print(True)</code><br>
+
+<h6 class="bold">Behavior</h6>
+
+If the tag is active → it is removed.
+<br>
+If the tag is not active → operation fails silently (returns false).
+<br>
+Cannot remove Permanent tags .
+<br><br>
+
+<h6 class="bold">Best Use Cases</h6>
+Stopping an action (stop aiming, stop sprinting…)
+<br>
+State transitions (run → idle)
+<br>
+Input releases
+                                        </p>
+
+
+                                        <h4 class="section-title cyan">RemoveActiveTags(Array)</h2><br>
+                                        <p class="white">
+                                          Batch-removes multiple active tags at once.<br>
+                                           <code>Input: Tag(GameplayTag)</code> →  Tag we want to remove.<br>
+<code>Input: Print(bool)</code> → To print debug messages for development.
+<br>
+<code>Output: IsRemoved(bool)</code> → To use it for conditions.<br>
+<code>Output: Reason(String)</code> → To print Reason to know success or why fail or just use <code>Print(True)</code><br>
+
+<h6 class="bold">Behavior</h6>
+
+Each tag passes:
+<br>
+Active check
+<br>
+Silent failure if not active<br>
+Cannot remove Permanent tags .
+<br><br>
+
+<h6 class="bold">Best Use Cases</h6>
+Resetting movement states
+<br>
+Clearing temporary states after stun / hit
+<br>
+Ending multiple actions simultaneously
+                                        </p>
+                             </div>
+
+                               <div class="section-block white" id="removeBlocked">
+                                  <img src="assets/images/tags/removeBlocked.PNG" class="w-100"><hr>
+                                     <h4 class="section-title cyan">RemoveBlockedTag()</h2><br>
+                                        <p class="white">
+                                           Removes a single tag from the Blocked Layer.<br>
+                                           <code>Input: Tag(GameplayTag)</code> →  Tag we want to remove.<br>
+<code>Input: Print(bool)</code> → To print debug messages for development.
+<br>
+<code>Output: IsRemoved(bool)</code> → To use it for conditions.<br>
+<code>Output: Reason(String)</code> → To print Reason to know success or why fail or just use <code>Print(True)</code><br>
+
+<h6 class="bold">Behavior</h6>
+
+If the tag is blocked → it is removed.
+<br>
+If the tag is not blocked → operation fails silently (returns false).
+<br><br>
+
+<h6 class="bold">Best Use Cases</h6>
+Leaving a restricted zone
+<br>
+Re-enabling weapon usage
+<br>
+Releasing character from “hard lock” states (cutscene end, stun end)
+                                        </p>
+
+
+                                        <h4 class="section-title cyan">RemoveBlockedTags(Array)</h2><br>
+                                        <p class="white">
+                                          Batch-removes multiple blocked tags at once.<br>
+                                           <code>Input: Tag(GameplayTagContainer)</code> →  Tag we want to remove.<br>
+<code>Input: Print(bool)</code> → To print debug messages for development.
+<br>
+<code>Output: IsRemoved(bool)</code> → To use it for conditions.<br>
+<code>Output: Reason(String)</code> → To print Reason to know success or why fail or just use <code>Print(True)</code><br>
+
+<h6 class="bold">Behavior</h6>
+
+Each tag passes:
+<br>
+Active check
+<br>
+Silent failure if not blocked<br>
+If one tag fail all fail
+<br><br>
+
+<h6 class="bold">Best Use Cases</h6>
+Resetting movement states
+<br>
+Clearing temporary states after stun / hit
+<br>
+Ending multiple actions simultaneously
+                                        </p>
+                             </div>
+
+   
+                                </div>
+ <div class="section-block" id="replace">
+                                   <h1 class="section-title orange">4. Replace Operations</h1>
+                                   
+
+                                  <img src="assets/images/tags/replaceTags.PNG" class="w-100"><hr>
+
+                             <div class="section-block white" id="replaceActive">
+                                     <h4 class="section-title cyan">ReplaceActiveTag()</h2><br>
+                                        <p class="white">
+                                           Replaces an existing active tag with another tag.<br>
+                                           <code>Input: OldTag(GameplayTag)</code> →  old Tag we want to replace.<br>
+                                           <code>Input: NewTag(GameplayTag)</code> →  New tag we want to add<br>
+<code>Input: Debug(bool)</code> → To print debug messages for development.
+<br>
+<code>Output: IsReplaced(bool)</code> → To use it for conditions.<br>
+
+<h6 class="bold">Behavior</h6>
+
+Checks if OldTag is active.
+<br>
+Removes OldTag.
+<br>
+Runs full validation on NewTag:
+<br>
+Conflict rules (including bidirectional checks)
+<br>
+Duplicate prevention
+<br>
+If all checks pass → adds NewTag.
+<br>
+If the new tag fails validation → the replace is canceled and the old tag is still in layer.
+<br><br>
+
+<h6 class="bold">Best Use Cases</h6>
+Switching movement states (Idle → Run, Unarmed → Armed…)
+<br>
+Changing character stances (HipFire → ADS)
+<br>
+Smooth transitions without needing manual Remove + Add
+<br>
+Weapon switching
+<br>
+Replacing aim states
+<br>
+Ensuring error-free swapping when only one state should exist at a time
+                                        </p>
+Replaces a blocked tag with another blocked tag.
+
+
+                                        
+                             </div>
+
+                             <div class="section-block white" id="replaceBlocked">
+                                     <h4 class="section-title cyan">ReplaceBlockedTag()</h2><br>
+                                        <p class="white">
+                                           Replaces an existing Blocked tag with another tag.<br>
+                                           <code>Input: OldTag(GameplayTag)</code> →  old Tag we want to replace.<br>
+                                           <code>Input: NewTag(GameplayTag)</code> →  New tag we want to add<br>
+<code>Input: Debug(bool)</code> → To print debug messages for development.
+<br>
+<code>Output: IsReplaced(bool)</code> → To use it for conditions.<br>
+
+<h6 class="bold">Behavior</h6>
+
+Checks if OldTag is blocked.
+<br>
+Removes OldTag.
+<br>
+Runs full validation on NewTag:
+<br>
+Conflict rules (including bidirectional checks)
+<br>
+Duplicate prevention
+<br>
+If all checks pass → adds NewTag.
+<br>
+If the new tag fails validation → the replace is canceled and the old tag still in the layer.
+<br><br>
+
+<h6 class="bold">Best Use Cases</h6>
+Changing restricted zones behavior
+<br>
+Upgrading restrictions (Block_Aim → Block_All_Weapons)
+<br>
+Dynamic rule updates during gameplay (cutscenes / alarms / stealth transitions)
+    <br>                                    </p>
+
+
+                                        
+                             </div>
+
+                                </div>
+<div class="section-block" id="clear">
+                                   <h1 class="section-title orange">5. Clears Operations</h1>
+                                   
+
+                                  <img src="assets/images/tags/Clears.PNG" class="w-100"><hr>
+
+                             <div class="section-block white" id="clearActive">
+                                     <h4 class="section-title cyan">clearActiveTags()</h2><br>
+                                        <p class="white">
+                                          Clears all Active Tags stored inside the gameplay container.<br>
+<code>Input: print(bool)</code> → To print debug messages to see if layer empty or not for development.
+<br>
+
+<h6 class="bold">Behavior</h6>
+If <code>KeepPermanent</code> = true → Permanent tags remain untouched.
+<br>
+If <code>KeepPermanent</code> = false → All active tags are removed, including permanent ones.
+<br>
+
+
+<h6 class="bold">Use Cases:</h6>
+Resetting the active state before applying new tag logic.
+<br>
+Cleaning up temporary tags after an ability or animation ends.
+<br>
+Performing a soft or full reset depending on the KeepPermanent setting.
+                                        </p>
+
+
+                                        
+                             </div>
+ <div class="section-block white" id="clearBlocked">
+                                     <h4 class="section-title cyan">clearBlockedTags()</h2><br>
+                                        <p class="white">
+                                          Clears all Blocked Tags stored inside the gameplay container.<br>
+<code>Input: print(bool)</code> → To print debug messages to see if layer empty or not for development.
+<br>
+
+<h6 class="bold">Use Cases:</h6>
+Preparing a clean state when switching gameplay modes or states.
+                                        </p>
+
+
+                                        
+                             </div>
+
+                             <div class="section-block white" id="clearPermanent">
+                                     <h4 class="section-title cyan">clearPermanentTags()</h2><br>
+                                        <p class="white">
+                                          Clears all Permanent Tags stored inside the gameplay container.<br>
+<code>Input: print(bool)</code> → To print debug messages to see if layer empty or not for development.
+<br>
+
+<h6 class="bold">Use Cases:</h6>
+When the gameplay system needs to wipe all persistent states.
+                                        </p>
+
+
+                                        
+                             </div>
+                                </div>
+<div class="section-block" id="get">
+                                   <h1 class="section-title orange">6. Get Operations</h1>
+                                   
+                                  <img src="assets/images/tags/Geter.PNG" class="w-100"><hr>
+                             <div class="section-block white" id="getActive">
+                                     <h4 class="section-title cyan">GetActiveTags(output)</h2><br>
+                                        <p class="white">
+                                          Returns the current Active Gameplay Tag Container stored in the component.<br>
+<code>Input: print(bool)</code> → To print tags in the container for development.<br>
+<code>ReturnValue: Output(GameplayTagContainer)</code> → full snapshot of all active tags, including both temporary and permanent ones because permanent mean always active during.
+<br>
+
+<h6 class="bold">Use Cases:</h6>
+Debugging current tag logic.
+<br>
+Feeding other systems (abilities, movement, UI) with the current active tag set.
+                                        </p>
+
+
+                                        
+                             </div>
+                               <div class="section-block white" id="getBlocked">
+                                     <h4 class="section-title cyan">GetBlockedTags(output)</h2><br>
+                                        <p class="white">
+                                         <code>Same as GetActive but it's get BlockedTags</code>
+                                        </p>
+                             </div>
+                              <div class="section-block white" id="getPermanent">
+                                     <h4 class="section-title cyan">GetPermanentTags(output)</h2><br>
+                                        <p class="white">
+                                         <code>Same as GetActive,Getblocked but it's get PermanentTags</code>
+                                        </p>
+                             </div>
+                                </div>
+<div class="section-block" id="check">
+                                   <h1 class="section-title orange">7. CheckLayers Operations</h1>
+                                   
+                                  <img src="assets/images/tags/Checks.PNG" class="w-100"><hr>
+                             <div class="section-block white" id="checkActive">
+                                     <h4 class="section-title cyan">IsTagActive(Result)</h2><br>
+                                        <p class="white">
+Checks whether a specific Gameplay Tag is currently active inside the component.
+<br>
+<h6 class="bold">Returns:</h6>
+<code>Boolean</code> – True if the tag exists in the Active container (temporary or permanent), otherwise False.
+
+<h6 class="bold">Use Cases:</h6>
+Ability system logic (is player aiming? sprinting? stunned?).<br>
+Conditional gameplay branching.
+
+                                        </p>
+
+
+                                        
+                             </div>
+                              
+                             <div class="section-block white" id="checkBlocked">
+                                     <h4 class="section-title cyan">IsTagBlocked(Result)</h2><br>
+                                        <p class="white">
+Checks if the specified Gameplay Tag is currently blocked and should not be activated.<br>
+<h6 class="bold">Returns:</h6>
+<code>Boolean</code> – True if the tag exists in the Blocked container , otherwise False.
+
+<h6 class="bold">Use Cases:</h6>
+Preventing tag activation (e.g., can’t sprint while crouching(Anyway blocked tags will not active by default)).
+<br>
+Controlling complex bidirectional restrictions.
+
+                                        </p>
+
+
+                                        
+                             </div>
+
+                             <div class="section-block white" id="checkPermanent">
+                                     <h4 class="section-title cyan">IsTagPermanent(Result)</h2><br>
+                                        <p class="white">
+Checks whether a specific Gameplay Tag is currently exist inside the Permanent Layer.
+<br>
+<h6 class="bold">Returns:</h6>
+<code>Boolean</code> – True if the tag exists in the Permanent container , otherwise False.
+
+<h6 class="bold">Use Cases:</h6>
+Loading player class, equipment, or game mode–level states.
+<br>
+Ensuring long-term tags remain unchanged unless manually removed.
+<br>
+Debugging initialization states.
+
+                                        </p>
+
+
+                                        
+                             </div>
+                                </div>
+<div class="section-block" id="serialization">
+                                   <h1 class="section-title orange">8. Save / Load State</h1>
+                                   
+                                 
+                             <div class="section-block white" id="serializationGet">
+                                 <img src="assets/images/tags/getserialized.PNG" class="w-100"><hr>
+                                     <h4 class="section-title cyan">GetSerializedState</h2><br>
+                                        <p class="white">
+
+Generates a serialized snapshot of the <code>ActiveTags layer</code> current state.<br>
+This snapshot is used for saving or restoring gameplay actiev tags at runtime.
+<br>
+<h6 class="bold">Input:</h6>
+
+RuntimeBlacklist (GameplayTagContainer)<br>
+A list of tags that should be excluded from the save (e.g., temporary combat states, session-only flags).
+<br><br>
+<h6 class="bold">Output:</h6>
+
+SavedState (GameplayTagContainer)
+A container including all valid tags that can be restored later, after removing any blacklisted entries.
+<br><br>
+<h6 class="bold">Logic Summary:</h6>
+
+Copy Active Tags.
+<br>
+Remove tags that appear in the RuntimeBlacklist.
+<br>
+Return the final cleaned container as the saved state.
+<br><br>
+<h6 class="bold">Use Cases:</h6>
+
+Saving player state when entering/exiting restricted zones.
+<br>
+Checkpoint systems.
+<br>
+Networking or RPC sync.(Not tested in multiplayer online games , but it will be in next updates to make component compatible with online games)
+
+                                        </p>
+                             </div>
+
+                              <div class="section-block white" id="serializationLoad">
+                                 <img src="assets/images/tags/LoadSerialized.PNG" class="w-100"><hr>
+                                     <h4 class="section-title cyan">LoadSerializedState</h2><br>
+                                        <p class="white">
+Loads a previously saved tag structure and restores it into the component while preserving the Permanent Tags layer.
+</p><p>     
+<h5 class="bold">Input:</h6>
+SerializedStructure (struct – output of GetSerializedState)<br>
+Contains the tags that must be re-applied.
+</p><p>
+
+<h5 class="bold">Logic Summary: </h6>
+<br>
+<h6 class="orange">1. Restore Permanent Tags first:</h5>
+
+Set ActiveTags = PermanentTags (permanent tags always take priority).
+<br><br>
+<h6 class="orange">2. Merge Saved Tags:</h6>
+
+For each tag in the serialized structure:
+<br>
+If the tag is not already permanent, add it back to ActiveTags.
+<br>
+Permanent tags are skipped because they were already restored in step 1.<br>
+also blocked tags will be restored to blocked layer.<br>
+split the structure to see the arrays of active and blocked tags individually. <br>
+<br><br>
+<h6 class="orange">3. Ensure no duplicates and no conflicts (handled internally).</h6>
+<br><br>
+<h5 class="bold">Use Cases:</h5>
+
+Re-entering a restricted area with correct previous state.
+<br>
+Player respawn or level reload.
+<br>
+Applying external saved states without breaking the permanent layer.
+                                        </p>
+                             </div>
+                                </div>
+<div class="section-block" id="reseter">
+                                   <h1 class="section-title orange">9. Reseter</h1>
+                                   
+                                 <img src="assets/images/tags/reset.PNG" class="w-100"><hr>
+                             <div class="section-block white" id="reseter">
+                                 
+                                     <h4 class="section-title cyan">ResetComponent()</h2><br>
+                                        <p class="white">
+Resets the component to a clean state by removing all Active and Blocked tags while preserving Permanent Tags.<br>
+Permanent Tags always remain active throughout the entire game lifetime and are re-applied automatically after the reset. <br>
+<br>
+<h6 class="bold">Use Cases: </h6>
+Resetting player states when entering or leaving special gameplay zones.
+<br>
+Cleaning temporary combat/interactions state.
+<br>
+Soft-reload of character state without losing long-lived attributes.
+
+                                        </p>
+                             </div>
+
+                             
+                                </div>
+<div class="section-block" id="private">
+                                   <h1 class="section-title orange">10. Internal Utility(Private)</h1>
+                             <div class="section-block white" id="privateConflict">
+                                  <img src="assets/images/tags/Conflict.PNG" class="w-100"><hr>
+                                     <h4 class="section-title cyan">CheckConflictRules()</h2><br>
+                                        <p class="white">
+                                          Validates whether an input tag can be added by checking the Conflict Rules defined inside the DataTable.<br>
+This includes a full bi-directional conflict check, ensuring the user can't forget to define the reverse conflict.
+<br><br>
+<h6 class="bold">Logic Summary</h6>
+
+Validate the input tag (must not be empty).
+<br>
+Validate the ActorType (must not be “None”).
+<br>
+Fetch the corresponding row from the Conflict Rules DataTable by compare ActorType with RowName.
+<br>
+If the row does not exist → operation stop and print critical message error
+<br><br>
+<text class="orange bold">If the row exists:</text>
+<br>
+Check self-conflict rule for the input tag to prevent tag conflict with it-self.
+<br>
+Check any conflict rules defined for other tags that conflict with the input tag.
+<br>
+Perform reverse (bi-directional) conflict check:
+<br><br>
+<code>Example:<br>
+If A conflicts B<br>
+But the developer forgot to add "B conflicts A"<br>
+The system still catches it.<br>
+</code><br><br> 
+If any conflict rule is triggered → stop the whole operation and return false.
+<br>
+If nothing is violated → return true.
+<br>
+<h6 class="bold orange">Notes: </h6>
+
+Internal private function—not callable externally.
+<br>
+Guarantees stable, predictable, consistent gameplay tag behavior.
+                                        </p>
+                             </div>
+ <div class="section-block white" id="privateDuplicated">
+                                  <img src="assets/images/tags/CheckDuplicate.PNG" class="w-100"><hr>
+                                     <h4 class="section-title cyan">CheckDuplicated()</h2><br>
+                                        <p class="white">
+                                        Internal helper function used to prevent adding a tag that already exists in either the Active or Blocked layers.<br>
+<br>
+<h6 class="bold">Logic Summary</h6>
+
+Input Tag is checked against the Active container.<br>
+Then checked against the Blocked container.<br>
+If found in any of them → the tag is considered duplicated, and the caller function must abort the operation or remove it first.
+<br><br>
+<h6 class="bold">Notes</h6>
+
+This is a private function, not accessible outside the Actor Component.
+<br>
+Exists only for internal data integrity.
+                                        </p>
+                             </div>
+                                </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="doc-sidebar col-md-3 col-12 order-0 d-none d-md-flex">
+                        <div id="doc-nav" class="doc-nav">
+	                            <nav id="doc-menu" class="nav doc-menu flex-column sticky">
+		                            <li class="nav-item">
+	                                    <a class="nav-link scrollto" href="#introduction-section">Introduction</a>
+		                            </li>
+                                     <li class="nav-item">
+	                                    <a class="nav-link scrollto" href="#why-section">Why this component</a>
+		                            </li>
+		                            <li class="nav-item">
+	                                    <a class="nav-link scrollto" href="#install-section">Installation</a>
+		                            </li>
+                                     <li class="nav-item">
+	                                    <a class="nav-link scrollto" href="#core-section">Core Concepts</a>
+                                    </li>
+                                    <li class="nav-item">
+	                                    <a class="nav-link scrollto" href="#api-section">Api Documentation</a>
+                                    </li>
+                                    <nav class="nav doc-sub-menu nav flex-column">
+                                        <li class="nav-item apis1">
+                                            <a class="nav-link scrollto apis2" href="#init">1. Initialization</a>
+                                            <ul>
+                                                <li> <a class="nav-link scrollto" href="#init">InitializePermanentTags()</a></li>
+                                            </ul>
+	                                    </li>
+                                           <li class="nav-item apis1">
+                                            <a class="nav-link scrollto apis2" href="#add">2. Add Operations</a>
+                                            <ul>
+                                                <li> <a class="nav-link scrollto" href="#addActive">AddActiveTag()</a></li>
+                                                <li> <a class="nav-link scrollto" href="#addActive">AddActiveTags(Array)</a></li>
+                                                <li> <a class="nav-link scrollto" href="#addBlocked">AddBlockedTag()</a></li>
+                                                <li> <a class="nav-link scrollto" href="#addBlocked">AddBlockedTags(Array)</a></li>
+                                          
+                                            </ul>
+	                                    </li>
+	                                        <li class="nav-item apis1">
+                                            <a class="nav-link scrollto apis2" href="#remove">3. Remove Operations</a>
+                                            <ul>
+                                                <li> <a class="nav-link scrollto" href="#removeActive">RemoveActiveTag()</a></li>
+                                                <li> <a class="nav-link scrollto" href="#removeActive">RemoveActiveTags(Array)</a></li>
+                                                <li> <a class="nav-link scrollto" href="#removeBlocked">RemoveBlockedTag()</a></li>
+                                                <li> <a class="nav-link scrollto" href="#removeBlocked">RemoveBlockedTags(Array)</a></li>
+                                          
+                                            </ul>
+	                                    </li>
+
+<li class="nav-item apis1">
+                                            <a class="nav-link scrollto apis2" href="#replace">4. Replace Operations</a>
+                                            <ul>
+                                                <li> <a class="nav-link scrollto" href="#replaceActive">ReplaceActiveTag()</a></li>
+                                                <li> <a class="nav-link scrollto" href="#replaceBlocked">ReplaceBlockedTag()</a></li>
+                                            </ul>
+	                                    </li>
+                                        <li class="nav-item apis1">
+                                           <a class="nav-link scrollto apis2" href="#clear">5. ClearLayers Operations</a>
+                                            <ul>
+                                                <li> <a class="nav-link scrollto" href="#clearActive">ClearActiveTags()</a></li>
+                                                <li> <a class="nav-link scrollto" href="#clearBlocked">ClearBlockedTags()</a></li>
+                                                <li> <a class="nav-link scrollto" href="#clearPermanent">ClearPermanentTags()</a></li>
+                                            </ul>
+	                                    </li>
+                                        <li class="nav-item apis1">
+                                           <a class="nav-link scrollto apis2" href="#get">6. GetTags Operations</a>
+                                            <ul>
+                                                <li> <a class="nav-link scrollto" href="#getActive">GetActiveTags()</a></li>
+                                                <li> <a class="nav-link scrollto" href="#getBlocked">GetBlockedTags()</a></li>
+                                                <li> <a class="nav-link scrollto" href="#getPermanent">GetPermanentTags()</a></li>
+                                            </ul>
+	                                    </li>
+                                        <li class="nav-item apis1">
+                                           <a class="nav-link scrollto apis2" href="#check">7. CheckTags Operations</a>
+                                            <ul>
+                                                <li> <a class="nav-link scrollto" href="#checkActive">IsTagActive()</a></li>
+                                                <li> <a class="nav-link scrollto" href="#checkBlocked">IsTagBlocked()</a></li>
+                                                <li> <a class="nav-link scrollto" href="#checkPermanent">IsTagPermanent()</a></li>
+                                            </ul>
+	                                    </li>
+                                        <li class="nav-item apis1">
+                                            <a class="nav-link scrollto apis2" href="#serialization">8. Save / Load State</a>
+                                            <ul>
+                                                <li> <a class="nav-link scrollto" href="#serializationGet">GetSerializedState()</a></li>
+                                                  <li> <a class="nav-link scrollto" href="#serializationLoad">LoadSerializedState ()</a></li>
+                                            </ul>
+	                                    </li>
+                                        <li class="nav-item apis1">
+                                            <a class="nav-link scrollto apis2" href="#reseter">9. Reseter</a>
+                                            <ul>
+                                                <li> <a class="nav-link scrollto" href="#reseter">ResetComponent()</a></li>
+                                            </ul>
+	                                    </li>
+                                          <li class="nav-item apis1">
+                                            <a class="nav-link scrollto apis2" href="#private">10. Internal Utility ()</a>
+                                            <ul>
+                                                <li> <a class="nav-link scrollto" href="#privateConflict">CheckConflictRules()</a></li>
+                                                <li> <a class="nav-link scrollto" href="#privateDuplicated">CheckDuplicated()</a></li>
+                                            </ul>
+	                                    </li>
+	                                    
+                                    </nav><!--//nav-->
+	                            </nav><!--//doc-menu-->
+	                        
+                        </div>
+                    </div>
+                </div>             
+            </div>
+        </div>
+    </div>
+ <div class="intanim">
+       
+ <center><h1>Event Dispatchers</h1></center>
+ <img src="assets/images/Capture.PNG" class="w-100">
+    </div><br> <br>
+
+
+    <div class="doc-content col-md-1 col-12 order-0  intanim dispatchers">
+       
+ <center><h1>How to use with AnimationBlueprintGraph(ABP_) ?</h1></center><br>
+ <center><h3>Overview</h3>
+ <p class="paraanim">
+To safely access your Gameplay Tags Component from the Animation Blueprint—without access errors, thread issues, or invalid references—you must use a shadowing structure variable. <br>
+This ensures the AnimBP works only with copied data, not live references, which prevents runtime crashes and keeps performance high.
+
+
+
+
+
+
+<br>
+<text class="orange">1. Shadowing Variable (Struct-Based Animation State Cache)</text>
+<br>
+The Animation Blueprint runs on a separate thread and cannot reliably read Actor Component data directly.<br>
+So we create a structure variable inside the AnimBP, for example such as:<br>
+Struct: AnimStateData<br>
+<text class="orange">Contains:</text><br>
+
+Active Tags (GameplayTagContainer)
+<br>
+Blocked Tags (GameplayTagContainer)
+<br>
+Permanent Tags (GameplayTagContainer)
+<br>
+Optional booleans (<code>IsAiming, IsArmed, etc</code>) — derived from tags
+<br>Or any other data that is relevant to your project
+<br>This struct becomes the safe mirrored state of the component.
+<br>
+
+
+<text class="orange">2. RefreshState Function (Called From Character → AnimBP)
+</text><br>
+The Character BP pushes updated tag data to the AnimBP every time something changes.
+<br>Create a Custom Event:
+<br>Event UpdateTagState (Input: AnimStateData Struct) → Set the shadowing variable
+<br>Whenever tags change:
+<code>OnActiveTagAdded</code>
+<code>OnActiveTagRemoved</code>
+<code>OnBlockedTagAdded</code>
+<code>OnBlockedTagRemoved</code>
+<code>Replace events</code>
+<code>Clear events</code>
+<br>You simply call UpdateTagState and pass the struct.
+<br>This guarantees the AnimBP is always synced.<br>
+</p>
+    </center>
+<center><h1>Other Example in sample project with MotionMatching + ChooserTable</h1></center><br>
+<p>
+<h4 class="bold orange">Why This Integration Works Perfectly</h4><br>
+<code  style="color:green ;font-size: 23px;">✔ Zero access errors</code>
+<code  style="color:green ;font-size: 23px;">✔ Zero crashes</code>
+<code style="color:green ;font-size: 23px;">✔ Safe for multithreading</code>
+<code  style="color:green ;font-size: 23px;">✔ UI / Animation / Gameplay always synced</code><br><br>       
+<code  style="color:green ;font-size: 23px;">✔ Perfect for Motion Matching + Chooser</code>
+<code  style="color:green ;font-size: 23px;">✔ Component remains modular and reusable</code>
+<code style="color:green ;font-size: 23px;">✔ Production-ready for AAA pipelines</code>
+
+
+
+
+
+
+></p><br>
+<p class="paraanim">
+1. Create Structure and call it → <code>AnimDataState</code><br>
+2. add booleans variable you need and variables for gameplaytags containers (Anyway it just for example you can make it as you like ) 
+<img src="assets/images/Anim/1.PNG" class="w-auto" style="height: 800px !important;"><br>
+3. go to your Character blueprint then create new function let's call it <code>UpdateAnimStateTags</code><br>
+4. create a variable call it → <code>AnimStateData</code> and set variable type → <code>your structure</code><br>
+5. Then Create some local variables to fill our structure like shown in the image <br>
+<img src="assets/images/Anim/2.PNG" class="w-auto"><br>
+6. by using function IsTagActive we can fill our booleans<br>
+also tags container we can use GetFunctions to save Tags container
+<img src="assets/images/Anim/3.PNG" class="w-100" style="height: 800px !important;"><br>
+7. let's pass data to AnimStateData(struct).
+<img src="assets/images/Anim/4.PNG" class="w-100" style="height: 800px !important;"><br>
+8. go to your animation blueprint and create a variable <code>AnimStateData</code><br>
+<img src="assets/images/Anim/5.PNG" class="w-auto"><br>
+9. let's fill it in Game thread don't do anything in animation blueprint again close it<br>
+go back to function  <code>UpdateAnimStateTags</code> in your character blueprint
+<br> send Data from the character variable cast it to animation graph variable 
+<img src="assets/images/Anim/6.PNG" class="w-100" style="height: 800px !important;"><br>
+<center>Now Data passed to animation blueprint in game thread<br>
+
+[<code class="orange">Let's see how to use it with chooser Table</code>]<br>
+<img src="assets/images/Anim/1.gif"> <br><br>
+
+you can sync tags by add node <code>timer by event</code> and check looping in <code>0.02 50Hz</code> or <code>0.033 30Hz</code><br><br>
+<img src="assets/images/Anim/7.PNG" class="w-100" style="height: 800px !important;"><br>
+</center></p>
+</div><br> <br>
+<div class="intanim">
+       
+ <center><h1>Continued Updates & Support</h1>
+    <h1 class="btn btn-green" style="border-radius:0px ; background-color: olivedrab;"><a href="https://discord.com/users/427571562967728128" target="_blank" style="text-decoration:none;border-bottom: 1px solid white; color: white;">Discord Link for any report or feedback</a></h1>
+<p class="paraanim">
+We aim to keep the Advanced Gameplay Tags Manager System clean, stable, and easy to integrate.
+<br>Future updates will focus on:
+<br>
+Additional quality-of-life functions based on community feedback
+<br>
+More plug-and-play examples (Animation BP, Motion Matching, Restricted Zones, Item Systems)
+<br>
+Improved error-handling and debugging helpers
+<br>
+Optional performance-friendly utilities for large projects
+<br>
+Documentation refinements and new usage guides
+<br>
+We are committed to supporting the system with practical, meaningful updates—not unnecessary features.
+<br>
+</p>
+
+</center>
+    </div>
+    <footer id="footer" class="footer text-center">
+        <div class="container">
+            <small class="copyright"></i><a href="https://www.fab.com/sellers/CodedFate" target="_blank">CodedFate</a></span>     <i class="fas fa-heart"></i></small>
+        </div>
+    </footer>
+    <!-- Main Javascript -->          
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plugins/stickyfill/dist/stickyfill.min.js"></script> 
+    <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script> 
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/jstree.min.js"></script>
+    <script>
+  $(function () {
+    // 6 create an instance when the DOM is ready
+    $('#jstree').jstree();
+    $('#jstree2').jstree();
+    
+  });
+  </script>
+</body>
+</html> 
+
